@@ -11,9 +11,11 @@ export default function Home() {
 
     return (
         <div>
-            <div>This is the home page</div>
+            <div className="text-center text-4xl font-semibold">HokkienMee</div>
 
-            <NavButton buttonText="next" onClickHandler={goMainContentPage} />
+            <div className="text-center">
+                <NavButton buttonText="start" onClickHandler={goMainContentPage} />
+            </div>
         </div>
     );
 }
