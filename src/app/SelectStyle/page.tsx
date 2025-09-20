@@ -11,7 +11,7 @@ export default function SelectStyle() {
 
     return (
         <div className="w-1/2">
-            <div className="w-full text-center">This is the select style page!</div>
+            <div className="w-full text-center text-2xl font-medium">Select a style for your post</div>
 
             <div className="w-full text-center">
                 <label htmlFor="style-select" className="mr-4">Choose a style:</label>
@@ -23,7 +23,7 @@ export default function SelectStyle() {
                 </select>
             </div>
 
-            <div>
+            <div className="text-center">
                 <NavButton buttonText="back" onClickHandler={goBack} />
             </div>
         </div>

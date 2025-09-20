@@ -15,14 +15,14 @@ export default function MainContent() {
 
     return (
         <div className="w-1/2">
-            <div className="w-full text-center">This is the main content page!</div>
+            <div className="w-full text-center text-2xl font-medium">Provide a summary of your post</div>
 
             <textarea
                 name="main-content"
                 id="main-content"
                 rows={3}
                 placeholder="What do you want to post..."
-                className="w-full p-[8px] bg-white rounded-lg resize-none"
+                className="w-full p-[8px] bg-white rounded-lg resize-none mt-[14px]"
             ></textarea>
 
             <div className="flex justify-center space-x-8">
