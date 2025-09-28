@@ -1,15 +1,25 @@
 'use client'
 import { useRouter } from "next/navigation";
 import NavButton from "../Components/NavButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDataContext } from "../Contexts/DataContext";
 
 export default function SelectStyle() {
+    const { data, setData } = useDataContext();
+
     const router = useRouter();
-    const [selectedStyle, setSelectedStyle] = useState<string>('professional');
+    const [selectedStyle, setSelectedStyle] = useState<string>(data?.style ?? 'professional');  // if data.style is null | undefined, set to 'professional'
+
+    useEffect(() => {
+        if (data?.style) {
+            setSelectedStyle(data.style);
+        }
+    }, [data?.style])
 
     const goToNextPage = () => {
         // go to next page
         logSelectedStyle();
+        setData({ summary: data?.summary ?? "", style: selectedStyle })
     }
 
     const goBack = () => {
@@ -18,6 +28,7 @@ export default function SelectStyle() {
     }
 
     const logSelectedStyle = () => {
+        console.log(`main content: ${data?.summary}`)
         console.log(`selected style: ${selectedStyle}`);
     }
 

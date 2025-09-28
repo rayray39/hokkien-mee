@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Ubuntu, Ubuntu_Mono } from "next/font/google";
 import "./globals.css";
+import { DataProvider } from "./Contexts/DataContext";
 
 const ubuntu = Ubuntu({
     weight: "400",
@@ -27,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${ubuntuMono.className} antialiased flex flex-col justify-center items-center h-screen`}
       >
-        {children}
+        <DataProvider>{children}</DataProvider>
       </body>
     </html>
   );

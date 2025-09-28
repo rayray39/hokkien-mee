@@ -1,12 +1,21 @@
 'use client'
 import { useRouter } from "next/navigation";
 import NavButton from "../Components/NavButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDataContext } from "../Contexts/DataContext";
 
 export default function MainContent() {
+    const { data, setData } = useDataContext();
+
     const router = useRouter();
     const [mainContent, setMainContent] = useState<string>('');
     const [isMainContentEmpty, setIsMainContentEmpty] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (data?.summary) {
+            setMainContent(data.summary);
+        }
+    }, [data?.summary])
 
     const goSelectStylePage = () => {
         // next page
@@ -15,6 +24,7 @@ export default function MainContent() {
             // if no main content (summary of post)
             return;
         }
+        setData({ summary: mainContent, style: data?.style ?? "" }) // if data.style is null | undefined then set to ""
         router.push('/SelectStyle');
     }
 
