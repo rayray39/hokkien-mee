@@ -14,6 +14,7 @@ export default function MainContent() {
     }
 
     const goBack = () => {
+        // go back to home page
         router.back();
     }
 

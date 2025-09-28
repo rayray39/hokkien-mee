@@ -1,12 +1,24 @@
 'use client'
 import { useRouter } from "next/navigation";
 import NavButton from "../Components/NavButton";
+import { useState } from "react";
 
 export default function SelectStyle() {
     const router = useRouter();
+    const [selectedStyle, setSelectedStyle] = useState<string>('professional');
+
+    const goToNextPage = () => {
+        // go to next page
+        logSelectedStyle();
+    }
 
     const goBack = () => {
+        // go back to main content page
         router.back();
+    }
+
+    const logSelectedStyle = () => {
+        console.log(`selected style: ${selectedStyle}`);
     }
 
     return (
@@ -15,7 +27,13 @@ export default function SelectStyle() {
 
             <div className="w-full text-center">
                 <label htmlFor="style-select" className="mr-4">Choose a style:</label>
-                <select name="style-select" id="style-select" className="mt-[14px] py-[10px] px-[30px] rounded-lg bg-white">
+                <select 
+                    name="style-select" 
+                    id="style-select" 
+                    className="mt-[14px] py-[10px] px-[30px] rounded-lg bg-white"
+                    value={selectedStyle}
+                    onChange={(event) => setSelectedStyle(event.target.value)}
+                >
                     <option value="professional">professional</option>
                     <option value="achievement">achievement</option>
                     <option value="storytelling">storytelling</option>
@@ -23,8 +41,9 @@ export default function SelectStyle() {
                 </select>
             </div>
 
-            <div className="text-center">
+            <div className="flex justify-center space-x-8">
                 <NavButton buttonText="back" onClickHandler={goBack} />
+                <NavButton buttonText="next" onClickHandler={goToNextPage} />
             </div>
         </div>
     );
