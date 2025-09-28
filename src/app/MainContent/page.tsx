@@ -1,16 +1,24 @@
 'use client'
 import { useRouter } from "next/navigation";
 import NavButton from "../Components/NavButton";
+import { useState } from "react";
 
 export default function MainContent() {
     const router = useRouter();
+    const [mainContent, setMainContent] = useState<string>('');
 
     const goSelectStylePage = () => {
+        // next page
+        logMainContent();
         router.push('/SelectStyle');
     }
 
     const goBack = () => {
         router.back();
+    }
+
+    const logMainContent = () => {
+        console.log(`main content: ${mainContent}`);
     }
 
     return (
@@ -23,6 +31,8 @@ export default function MainContent() {
                 rows={3}
                 placeholder="What do you want to post..."
                 className="w-full p-[8px] bg-white rounded-lg resize-none mt-[14px]"
+                value={mainContent}
+                onChange={(event) => setMainContent(event.target.value)}
             ></textarea>
 
             <div className="flex justify-center space-x-8">
