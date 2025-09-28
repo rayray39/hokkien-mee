@@ -6,10 +6,15 @@ import { useState } from "react";
 export default function MainContent() {
     const router = useRouter();
     const [mainContent, setMainContent] = useState<string>('');
+    const [isMainContentEmpty, setIsMainContentEmpty] = useState<boolean>(false);
 
     const goSelectStylePage = () => {
         // next page
         logMainContent();
+        if (mainContent === "") {
+            // if no main content (summary of post)
+            return;
+        }
         router.push('/SelectStyle');
     }
 
@@ -19,7 +24,13 @@ export default function MainContent() {
     }
 
     const logMainContent = () => {
-        console.log(`main content: ${mainContent}`);
+        if (mainContent === "") {
+            console.log('main content is empty.');
+            setIsMainContentEmpty(true);
+        } else {
+            console.log(`main content: ${mainContent}.`);
+            setIsMainContentEmpty(false);
+        }
     }
 
     return (
@@ -35,6 +46,12 @@ export default function MainContent() {
                 value={mainContent}
                 onChange={(event) => setMainContent(event.target.value)}
             ></textarea>
+
+            {
+                isMainContentEmpty && <div className="text-center text-red-600">
+                    *summary of your post cannot be empty!
+                </div>
+            }
 
             <div className="flex justify-center space-x-8">
                 <NavButton buttonText="back" onClickHandler={goBack} />
