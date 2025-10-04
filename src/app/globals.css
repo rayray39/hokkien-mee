@@ -24,7 +24,7 @@ body {
   /* color: var(--foreground); */
 }
 
-#main-content:focus {
+#main-content:focus, #call-to-action:focus {
     border: 1px solid gray;
     outline: none;
 }
