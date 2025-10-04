@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import PageSelector from "../Components/PageSelector";
 
 export default function Audience() {
+    // the target audience that the post is trying to appeal to
+
     const { data, setData } = useDataContext();
     const router = useRouter()
 
@@ -23,7 +25,8 @@ export default function Audience() {
         setData({
             summary: data?.summary ?? "",
             style: data?.style ?? "",
-            audience: targetAudience ?? ""
+            audience: targetAudience ?? "",
+            callToAction: data?.callToAction ?? ""
         })
         router.push('/CallToAction');
     }
@@ -46,7 +49,7 @@ export default function Audience() {
                 selectedItem={targetAudience}
                 onChangeSelectedItem={(event) => setTargetAudience(event.target.value)}
             />
-            
+
             <div className="flex justify-center space-x-8">
                 <NavButton buttonText="back" onClickHandler={goBack}/>
                 <NavButton buttonText="next" onClickHandler={goToNextPage}/>

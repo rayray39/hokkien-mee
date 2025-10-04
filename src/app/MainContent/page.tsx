@@ -30,7 +30,8 @@ export default function MainContent() {
         setData({
             summary: mainContent,
             style: data?.style ?? "",
-            audience: data?.audience ?? ""
+            audience: data?.audience ?? "",
+            callToAction: data?.callToAction ?? ""
         });
         router.push('/SelectStyle');
     }

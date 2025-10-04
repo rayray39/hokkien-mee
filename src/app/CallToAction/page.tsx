@@ -1,13 +1,24 @@
 'use client'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import NavButton from "../Components/NavButton";
 import { useRouter } from "next/navigation";
 import PageTextArea from "../Components/PageTextArea";
+import { useDataContext } from "../Contexts/DataContext";
 
 export default function CallToAction() {
+    // the call to action that the user wants to have on readers
+
     const router = useRouter();
 
+    const { data, setData } = useDataContext();
+
     const [callToAction, setCallToAction] = useState<string>('');
+
+    useEffect(() => {
+        if (data?.callToAction) {
+            setCallToAction(data.callToAction);
+        }
+    }, [data?.callToAction])
 
     const goBack = () => {
         // go back to select target audience page
@@ -16,6 +27,12 @@ export default function CallToAction() {
 
     const finish = () => {
         console.log('heading to finish page.');
+        setData({
+            summary: data?.summary ?? "",
+            style: data?.style ?? "",
+            audience: data?.audience ?? "",
+            callToAction: callToAction
+        })
     }
 
     return (

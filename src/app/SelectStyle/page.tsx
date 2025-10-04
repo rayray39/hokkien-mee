@@ -25,7 +25,8 @@ export default function SelectStyle() {
         setData({
             summary: data?.summary ?? "",
             style: selectedStyle,
-            audience: data?.audience ?? ""
+            audience: data?.audience ?? "",
+            callToAction: data?.callToAction ?? ""
         });
         router.push('/Audience');
     }

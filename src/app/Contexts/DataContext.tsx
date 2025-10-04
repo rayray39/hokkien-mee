@@ -6,9 +6,10 @@ interface DataContextType {
     data: {
         summary: string;
         style: string,
-        audience: string
+        audience: string,
+        callToAction: string
     } | null;
-    setData: React.Dispatch<React.SetStateAction<{ summary: string; style: string, audience: string } | null>>;
+    setData: React.Dispatch<React.SetStateAction<{ summary: string; style: string, audience: string, callToAction: string } | null>>;
 }
 
 
@@ -17,7 +18,7 @@ const DataContext = createContext<DataContextType | null>(null);    // create th
 
 export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     // create a provider that will allow children components to have access to the shared data
-    const [data, setData] = useState<{ summary: string; style: string, audience: string } | null>(null);
+    const [data, setData] = useState<{ summary: string; style: string, audience: string, callToAction:string } | null>(null);
 
     const contextValue: DataContextType = {
         data,
