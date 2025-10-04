@@ -6,6 +6,7 @@ export default function Home() {
     const router = useRouter();
 
     const goMainContentPage = () => {
+        // go to the main content (summary page)
         router.push('/MainContent')
     }
 

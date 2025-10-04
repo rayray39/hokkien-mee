@@ -5,7 +5,9 @@ import { useEffect, useState } from "react";
 import { useDataContext } from "../Contexts/DataContext";
 
 export default function SelectStyle() {
-    const { data, setData } = useDataContext();
+    // the style of the post that the user wants to post about
+
+    const { data, setData } = useDataContext();     // global data (summary, style) for persistence
 
     const router = useRouter();
     const [selectedStyle, setSelectedStyle] = useState<string>(data?.style ?? 'professional');  // if data.style is null | undefined, set to 'professional'

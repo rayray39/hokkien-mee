@@ -5,10 +5,12 @@ import { useEffect, useState } from "react";
 import { useDataContext } from "../Contexts/DataContext";
 
 export default function MainContent() {
-    const { data, setData } = useDataContext();
+    // summary of the main content the user wants to post about
+    
+    const { data, setData } = useDataContext();     // global data (summary, style) for persistence
 
     const router = useRouter();
-    const [mainContent, setMainContent] = useState<string>('');
+    const [mainContent, setMainContent] = useState<string>('');     // user provided summary of content
     const [isMainContentEmpty, setIsMainContentEmpty] = useState<boolean>(false);
 
     useEffect(() => {
@@ -18,7 +20,7 @@ export default function MainContent() {
     }, [data?.summary])
 
     const goSelectStylePage = () => {
-        // next page
+        // next page (select style of content)
         logMainContent();
         if (mainContent === "") {
             // if no main content (summary of post)
