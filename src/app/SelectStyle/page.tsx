@@ -48,9 +48,10 @@ export default function SelectStyle() {
                     onChange={(event) => setSelectedStyle(event.target.value)}
                 >
                     <option value="professional">professional</option>
-                    <option value="achievement">achievement</option>
+                    <option value="achievement">inspirational</option>
                     <option value="storytelling">storytelling</option>
-                    <option value="funny">funny</option>
+                    <option value="storytelling">marketing</option>
+                    <option value="funny">humorous</option>
                 </select>
             </div>
 
