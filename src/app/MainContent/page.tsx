@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import NavButton from "../Components/NavButton";
 import { useEffect, useState } from "react";
 import { useDataContext } from "../Contexts/DataContext";
+import PageTextArea from "../Components/PageTextArea";
 
 export default function MainContent() {
     // summary of the main content the user wants to post about
@@ -51,17 +52,12 @@ export default function MainContent() {
 
     return (
         <div className="w-1/2">
-            <div className="w-full text-center text-2xl font-medium">Provide a summary of your post</div>
-
-            <textarea
-                name="main-content"
-                id="main-content"
-                rows={3}
+            <PageTextArea 
+                title="Provide a summary of your post"
                 placeholder="What do you want to post..."
-                className="w-full p-[8px] bg-white rounded-lg resize-none mt-[14px]"
-                value={mainContent}
-                onChange={(event) => setMainContent(event.target.value)}
-            ></textarea>
+                textareaContent={mainContent}
+                onChangeTextareaContent={(event) => setMainContent(event.target.value)}
+            />
 
             {
                 isMainContentEmpty && <div className="text-center text-red-600">
