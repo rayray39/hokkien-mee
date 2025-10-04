@@ -6,7 +6,7 @@ import { useDataContext } from "../Contexts/DataContext";
 
 export default function MainContent() {
     // summary of the main content the user wants to post about
-    
+
     const { data, setData } = useDataContext();     // global data (summary, style) for persistence
 
     const router = useRouter();
@@ -26,7 +26,11 @@ export default function MainContent() {
             // if no main content (summary of post)
             return;
         }
-        setData({ summary: mainContent, style: data?.style ?? "" }) // if data.style is null | undefined then set to ""
+        setData({
+            summary: mainContent,
+            style: data?.style ?? "",
+            audience: data?.audience ?? ""
+        });
         router.push('/SelectStyle');
     }
 

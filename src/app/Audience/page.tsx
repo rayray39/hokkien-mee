@@ -1,19 +1,37 @@
 'use client'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDataContext } from "../Contexts/DataContext";
 import NavButton from "../Components/NavButton";
 import { useRouter } from "next/navigation";
 
 export default function Audience() {
     const { data, setData } = useDataContext();
-
     const router = useRouter()
 
-    const [targetAudience, setTargetAudience] = useState<string>();
+    const [targetAudience, setTargetAudience] = useState<string>(data?.audience ?? "recruiters");
+
+    useEffect(() => {
+        if (data?.audience) {
+            setTargetAudience(data.audience);
+        }
+    }, [data?.audience])
+
+    const goToNextPage = () => {
+        // go to the next page
+        setData({
+            summary: data?.summary ?? "",
+            style: data?.style ?? "",
+            audience: targetAudience ?? ""
+        })
+    }
 
     const goBack = () => {
         // go back to select style page
         router.back();
+    }
+
+    const logTargetAudience = () => {
+        console.log(`selected target audience: ${targetAudience}`);
     }
 
     return (
@@ -38,7 +56,7 @@ export default function Audience() {
 
             <div className="flex justify-center space-x-8">
                 <NavButton buttonText="back" onClickHandler={goBack}/>
-                <NavButton buttonText="next" onClickHandler={goBack}/>
+                <NavButton buttonText="next" onClickHandler={goToNextPage}/>
             </div>
         </div>
     )

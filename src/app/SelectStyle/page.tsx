@@ -18,10 +18,15 @@ export default function SelectStyle() {
         }
     }, [data?.style])
 
-    const goToNextPage = () => {
-        // go to next page
+    const goTargetAudiencePage = () => {
+        // go to next page (select target audience)
         logSelectedStyle();
-        setData({ summary: data?.summary ?? "", style: selectedStyle })
+        setData({
+            summary: data?.summary ?? "",
+            style: selectedStyle,
+            audience: data?.audience ?? ""
+        });
+        router.push('/Audience');
     }
 
     const goBack = () => {
@@ -30,13 +35,12 @@ export default function SelectStyle() {
     }
 
     const logSelectedStyle = () => {
-        console.log(`main content: ${data?.summary}`)
         console.log(`selected style: ${selectedStyle}`);
     }
 
     return (
         <div className="w-1/2">
-            <div className="w-full text-center text-2xl font-medium">Select a style for your post</div>
+            <div className="w-full text-center text-2xl font-medium">How should your post feel?</div>
 
             <div className="w-full text-center">
                 <label htmlFor="style-select" className="mr-4">Choose a style:</label>
@@ -50,14 +54,14 @@ export default function SelectStyle() {
                     <option value="professional">professional</option>
                     <option value="achievement">inspirational</option>
                     <option value="storytelling">storytelling</option>
-                    <option value="storytelling">marketing</option>
-                    <option value="funny">humorous</option>
+                    <option value="marketing">marketing</option>
+                    <option value="humorous">humorous</option>
                 </select>
             </div>
 
             <div className="flex justify-center space-x-8">
                 <NavButton buttonText="back" onClickHandler={goBack} />
-                <NavButton buttonText="next" onClickHandler={goToNextPage} />
+                <NavButton buttonText="next" onClickHandler={goTargetAudiencePage} />
             </div>
         </div>
     );
