@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useDataContext } from "../Contexts/DataContext";
 import NavButton from "../Components/NavButton";
 import { useRouter } from "next/navigation";
+import PageSelector from "../Components/PageSelector";
 
 export default function Audience() {
     const { data, setData } = useDataContext();
@@ -38,24 +39,14 @@ export default function Audience() {
 
     return (
         <div className="w-1/2">
-            <div className="w-full text-center text-2xl font-medium">Who are you writing to?</div>
-
-            <div className="w-full text-center">
-                <label htmlFor="audience-select" className="mr-4">Choose a target audience:</label>
-                    <select 
-                        name="audience-select" 
-                        id="audience-select" 
-                        className="mt-[14px] py-[10px] px-[30px] rounded-lg bg-white"
-                        value={targetAudience}
-                        onChange={(event) => setTargetAudience(event.target.value)}
-                    >
-                        <option value="recruiters">recruiters</option>
-                        <option value="industry-peers">industry peers</option>
-                        <option value="potential-clients">potential clients</option>
-                        <option value="general-network">general network</option>
-                    </select>
-            </div>
-
+            <PageSelector
+                title="Who are you writing to?"
+                label="Choose a target audience"
+                optionsList={['recruiters', 'industry peers', 'potential clients', 'general network']}
+                selectedItem={targetAudience}
+                onChangeSelectedItem={(event) => setTargetAudience(event.target.value)}
+            />
+            
             <div className="flex justify-center space-x-8">
                 <NavButton buttonText="back" onClickHandler={goBack}/>
                 <NavButton buttonText="next" onClickHandler={goToNextPage}/>

@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import NavButton from "../Components/NavButton";
 import { useEffect, useState } from "react";
 import { useDataContext } from "../Contexts/DataContext";
+import PageSelector from "../Components/PageSelector";
 
 export default function SelectStyle() {
     // the style of the post that the user wants to post about
@@ -40,24 +41,13 @@ export default function SelectStyle() {
 
     return (
         <div className="w-1/2">
-            <div className="w-full text-center text-2xl font-medium">How should your post feel?</div>
-
-            <div className="w-full text-center">
-                <label htmlFor="style-select" className="mr-4">Choose a style:</label>
-                <select 
-                    name="style-select" 
-                    id="style-select" 
-                    className="mt-[14px] py-[10px] px-[30px] rounded-lg bg-white"
-                    value={selectedStyle}
-                    onChange={(event) => setSelectedStyle(event.target.value)}
-                >
-                    <option value="professional">professional</option>
-                    <option value="achievement">inspirational</option>
-                    <option value="storytelling">storytelling</option>
-                    <option value="marketing">marketing</option>
-                    <option value="humorous">humorous</option>
-                </select>
-            </div>
+            <PageSelector
+                title="How should your post feel?"
+                label="Choose a style"
+                optionsList={['professional', 'inspirational', 'storytelling', 'marketing', 'humorous']}
+                selectedItem={selectedStyle}
+                onChangeSelectedItem={(event) => setSelectedStyle(event.target.value)}
+            />
 
             <div className="flex justify-center space-x-8">
                 <NavButton buttonText="back" onClickHandler={goBack} />
