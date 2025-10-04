@@ -18,11 +18,13 @@ export default function Audience() {
 
     const goToNextPage = () => {
         // go to the next page
+        logTargetAudience();
         setData({
             summary: data?.summary ?? "",
             style: data?.style ?? "",
             audience: targetAudience ?? ""
         })
+        router.push('/CallToAction');
     }
 
     const goBack = () => {
