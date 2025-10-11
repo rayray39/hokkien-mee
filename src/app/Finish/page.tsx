@@ -7,13 +7,17 @@ export default function Finish() {
     const { data, setData } = useDataContext();
 
     const generatePost = async () =>{
-        // link this to a serverless function that will call openrouter api
         console.log('generate post');
         const response = await fetch("api/generate", {
-            method:'GET'
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({
+                prompt: 'What is the capital of france?'    // Todo: update this
+            })
         })
-        const data = await response.json()
-        console.log(`data: ${data.message}`)
+        const data = await response.json();
+        console.log(`message: ${data.message}`);
+        console.log(`generated content: ${data.generatedContent}`);
     }
 
     return (
