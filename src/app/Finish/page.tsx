@@ -6,6 +6,16 @@ import { useDataContext } from "../Contexts/DataContext"
 export default function Finish() {
     const { data, setData } = useDataContext();
 
+    const generatePost = async () =>{
+        // link this to a serverless function that will call openrouter api
+        console.log('generate post');
+        const response = await fetch("api/generate", {
+            method:'GET'
+        })
+        const data = await response.json()
+        console.log(`data: ${data.message}`)
+    }
+
     return (
         <div className="w-1/2">
             <div className="text-4xl font-semibold text-center">HokkienMee</div>
@@ -17,7 +27,7 @@ export default function Finish() {
             <SummarySection sectionTitle="call to action" sectionData={data?.callToAction}/>
 
             <div className="text-center">
-                <NavButton buttonText="generate post!" onClickHandler={() => {console.log('generate post')}}/>
+                <NavButton buttonText="generate post!" onClickHandler={generatePost}/>
             </div>
         </div>
     )
