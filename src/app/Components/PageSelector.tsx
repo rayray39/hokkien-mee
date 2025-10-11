@@ -12,6 +12,14 @@ export default function PageSelector({
     selectedItem:string,
     onChangeSelectedItem:React.ChangeEventHandler<HTMLSelectElement>
 }) {
+    // displays a generic select component (dropdown)
+
+    // title: the title for the page, indicates what this page is for
+    // label: the label for the select component, indicates what the choices of the dropdown mean
+    // optionsList: the list of options for the select component
+    // selectedItem: the item that is selected by the user from the list
+    // onChangeSelectedItem: the onChange event handler, which updates the item selected by the user
+
     return (
         <div>
             <div className="w-full text-center text-2xl font-medium">{title}</div>
