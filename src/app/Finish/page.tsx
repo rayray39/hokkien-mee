@@ -1,12 +1,15 @@
 'use client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavButton from "../Components/NavButton";
 import SummarySection from "../Components/SummarySection";
 import { useDataContext } from "../Contexts/DataContext"
+import { useRouter } from "next/navigation";
 
 export default function Finish() {
     const { data, setData } = useDataContext();
     const [generatedContent, setGeneratedContent] = useState<string>('');
+
+    const router = useRouter();
 
     const prompt:string = `
         You are an expert LinkedIn content creator. Your goal is to craft an engaging LinkedIn post based on the parameters.
@@ -42,6 +45,11 @@ export default function Finish() {
         console.log(`message: ${data.message}`);
         console.log(`generated content: ${data.generatedContent}`);
         setGeneratedContent(data.generatedContent);
+
+        // Todo: maybe update to a spinner
+        setTimeout(() => {
+            router.push(`/GenContent?text=${encodeURIComponent(data.generatedContent)}`);
+        }, 6000);
     }
 
     return (
