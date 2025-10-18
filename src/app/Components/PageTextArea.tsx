@@ -1,3 +1,4 @@
+import { useState } from "react"
 
 export default function PageTextArea({
     title,
@@ -26,10 +27,13 @@ export default function PageTextArea({
                 id="textarea-content"
                 rows={3}
                 placeholder={placeholder}
+                maxLength={300}
                 className="w-full p-[8px] bg-white rounded-lg resize-none mt-[14px]"
                 value={textareaContent}
                 onChange={onChangeTextareaContent}
             ></textarea>
+
+            <div className="text-right text-sm">{`${textareaContent.length}/300`}</div>
         </div>
     )
 }
