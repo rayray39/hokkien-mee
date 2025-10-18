@@ -43,7 +43,7 @@ export default function SelectStyle() {
     return (
         <div className="w-1/2">
             <PageSelector
-                title="How should your post feel?"
+                title="How should your post feel?🌇"
                 label="Choose a style"
                 optionsList={['professional', 'inspirational', 'storytelling', 'marketing', 'humorous']}
                 selectedItem={selectedStyle}

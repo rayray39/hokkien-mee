@@ -43,7 +43,7 @@ export default function Audience() {
     return (
         <div className="w-1/2">
             <PageSelector
-                title="Who are you writing to?"
+                title="Who are you writing to?👨‍👩‍👧‍👦"
                 label="Choose a target audience"
                 optionsList={['recruiters', 'industry peers', 'potential clients', 'general network']}
                 selectedItem={targetAudience}

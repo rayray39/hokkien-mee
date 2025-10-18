@@ -12,7 +12,7 @@ export default function Home() {
 
     return (
         <div>
-            <div className="text-center text-4xl font-semibold">HokkienMee</div>
+            <div className="text-center text-4xl font-semibold">HokkienMee🍜</div>
 
             <div className="text-center">
                 <NavButton buttonText="start" onClickHandler={goMainContentPage} />

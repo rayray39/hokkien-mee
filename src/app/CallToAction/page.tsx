@@ -57,7 +57,7 @@ export default function CallToAction() {
     return (
         <div className="w-1/2">
             <PageTextArea 
-                title="What is the call to action?"
+                title="What is the call to action?🤷‍♀️"
                 placeholder="Call to action..."
                 textareaContent={callToAction}
                 onChangeTextareaContent={(event) => setCallToAction(event.target.value)}

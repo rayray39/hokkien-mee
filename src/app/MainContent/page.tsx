@@ -54,7 +54,7 @@ export default function MainContent() {
     return (
         <div className="w-1/2">
             <PageTextArea 
-                title="Provide a summary of your post"
+                title="Provide a summary of your post🧾"
                 placeholder="What do you want to post..."
                 textareaContent={mainContent}
                 onChangeTextareaContent={(event) => setMainContent(event.target.value)}
