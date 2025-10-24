@@ -43,6 +43,9 @@ export default function CallToAction() {
             setIsCallToActionEmpty(true);
             return;
         }
+        if (callToAction.length >= 300) {
+            return;
+        }
 
         console.log('heading to finish page.');
         setData({

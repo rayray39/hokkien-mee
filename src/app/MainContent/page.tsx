@@ -27,6 +27,9 @@ export default function MainContent() {
             // if no main content (summary of post)
             return;
         }
+        if (mainContent.length >= 300) {
+            return;
+        }
         setData({
             summary: mainContent,
             style: data?.style ?? "",
