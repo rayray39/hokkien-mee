@@ -1,13 +1,16 @@
 'use client'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NavButton from "../Components/NavButton";
 import SummarySection from "../Components/SummarySection";
 import { useDataContext } from "../Contexts/DataContext"
 import { useRouter } from "next/navigation";
+import { Loader } from '@mantine/core';
+
 
 export default function Finish() {
     const { data, setData } = useDataContext();
     const [generatedContent, setGeneratedContent] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const router = useRouter();
 
@@ -46,9 +49,19 @@ export default function Finish() {
         console.log(`generated content: ${data.generatedContent}`);
         setGeneratedContent(data.generatedContent);
 
-        // Todo: maybe update to a spinner
+        setIsLoading(true);
         setTimeout(() => {
             router.push(`/GenContent?text=${encodeURIComponent(data.generatedContent)}`);
+            setIsLoading(false);
+        }, 6000);
+    }
+
+    const test = async () => {
+        console.log('loading')
+        setIsLoading(true);
+        setTimeout(() => {
+            console.log('loading ended')
+            setIsLoading(false);
         }, 6000);
     }
 
@@ -63,7 +76,10 @@ export default function Finish() {
             <SummarySection sectionTitle="call to action🤷‍♀️" sectionData={data?.callToAction}/>
 
             <div className="text-center">
-                <NavButton buttonText="generate post!" onClickHandler={generatePost}/>
+                {
+                    isLoading ? <Loader color="rgba(0, 0, 0, 1)" size="lg" /> 
+                        : <NavButton buttonText="generate post!" onClickHandler={test}/>
+                }
             </div>
         </div>
     )

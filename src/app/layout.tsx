@@ -3,6 +3,11 @@ import { Ubuntu, Ubuntu_Mono } from "next/font/google";
 import "./globals.css";
 import { DataProvider } from "./Contexts/DataContext";
 
+import '@mantine/core/styles.css';
+
+import { MantineProvider, mantineHtmlProps } from '@mantine/core';
+
+
 const ubuntu = Ubuntu({
     weight: "400",
     subsets: ["latin"]
@@ -24,11 +29,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" {...mantineHtmlProps}>
       <body
         className={`${ubuntuMono.className} antialiased flex flex-col justify-center items-center h-screen`}
       >
-        <DataProvider>{children}</DataProvider>
+        <MantineProvider>
+            <DataProvider>{children}</DataProvider>
+        </MantineProvider>
       </body>
     </html>
   );
