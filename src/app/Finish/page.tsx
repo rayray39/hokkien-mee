@@ -52,17 +52,8 @@ export default function Finish() {
         setIsLoading(true);
         setTimeout(() => {
             router.push(`/GenContent?text=${encodeURIComponent(data.generatedContent)}`);
-            setIsLoading(false);
         }, 6000);
-    }
-
-    const test = async () => {
-        console.log('loading')
-        setIsLoading(true);
-        setTimeout(() => {
-            console.log('loading ended')
-            setIsLoading(false);
-        }, 6000);
+        setIsLoading(false);
     }
 
     return (
@@ -78,7 +69,7 @@ export default function Finish() {
             <div className="text-center">
                 {
                     isLoading ? <Loader color="rgba(0, 0, 0, 1)" size="lg" /> 
-                        : <NavButton buttonText="generate post!" onClickHandler={test}/>
+                        : <NavButton buttonText="generate post!" onClickHandler={generatePost}/>
                 }
             </div>
         </div>
