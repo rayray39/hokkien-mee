@@ -11,6 +11,10 @@ export default function PageTextArea({
     textareaContent:string,
     onChangeTextareaContent:React.ChangeEventHandler<HTMLTextAreaElement>
 }) {
+
+    const normalTextareaLength = "text-right text-sm text-black";
+    const exceedTextareaLength = "text-right text-sm text-red-600"
+
     return (
         // displays a generic textarea component
 
@@ -25,7 +29,7 @@ export default function PageTextArea({
             <textarea
                 name="textarea-content"
                 id="textarea-content"
-                rows={3}
+                rows={4}
                 placeholder={placeholder}
                 maxLength={300}
                 className="w-full p-[8px] bg-white rounded-lg resize-none mt-[14px]"
@@ -33,7 +37,9 @@ export default function PageTextArea({
                 onChange={onChangeTextareaContent}
             ></textarea>
 
-            <div className="text-right text-sm">{`${textareaContent.length}/300`}</div>
+            <div className={textareaContent.length >= 300 ? exceedTextareaLength : normalTextareaLength}>
+                {`${textareaContent.length}/300`}
+            </div>
         </div>
     )
 }
