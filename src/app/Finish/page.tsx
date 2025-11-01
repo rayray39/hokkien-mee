@@ -32,7 +32,7 @@ export default function Finish() {
         - Call to Action: ${data?.callToAction}
 
         Output:
-        A complete LinkedIn post (3–5 short paragraphs, human-like tone, ready to post).
+        A complete LinkedIn post (3–5 short paragraphs, human-like tone, ready to post). Do NOT include any preamble text.
     ` 
 
     const generatePost = async () =>{
