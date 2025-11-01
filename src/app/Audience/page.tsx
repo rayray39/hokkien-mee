@@ -16,6 +16,8 @@ export default function Audience() {
     useEffect(() => {
         if (data?.audience) {
             setTargetAudience(data.audience);
+        } else {
+            setTargetAudience('recruiters');
         }
     }, [data?.audience])
 

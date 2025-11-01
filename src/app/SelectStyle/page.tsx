@@ -16,6 +16,8 @@ export default function SelectStyle() {
     useEffect(() => {
         if (data?.style) {
             setSelectedStyle(data.style);
+        } else {
+            setSelectedStyle('professional')
         }
     }, [data?.style])
 
