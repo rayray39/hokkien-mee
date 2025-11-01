@@ -1,12 +1,17 @@
 'use client'
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import NavButton from "../Components/NavButton";
+import { useDataContext } from "../Contexts/DataContext";
 
 export default function GenContent() {
     const searchParams = useSearchParams();
     const text:string = searchParams.get('text') ?? "";     // retrieve the 'text' param (llm generated output)
 
     const [genContent, setGenContent] = useState<string>(text);
+
+    const router = useRouter();
+    const {data, setData, clearExistingData} = useDataContext();
 
     const [copied, setCopied] = useState<boolean>(false);
     const copiedButtonStyle = `
@@ -44,6 +49,13 @@ export default function GenContent() {
         }
     }
 
+    const goBackToHomePage = () => {
+        console.log('going back to home page');
+        // clear the existing data
+        clearExistingData();
+        router.push("/")
+    }
+
     return (
         <div className="w-1/2">
             <div className="w-full text-center text-2xl font-medium">Generated Post</div>
@@ -57,10 +69,11 @@ export default function GenContent() {
                 onChange={(event) => setGenContent(event.target.value)}
             ></textarea>
 
-            <div className="text-center">
+            <div className="flex justify-center space-x-8">
                 <button onClick={copyGenContent} className={copied ? copiedButtonStyle : originalButtonStyle}>
                     {copied ? "copied" : "copy"}
                 </button>
+                <NavButton buttonText="back to home" onClickHandler={goBackToHomePage}/>
             </div>
         </div>
     )

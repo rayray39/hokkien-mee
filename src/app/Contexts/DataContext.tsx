@@ -1,5 +1,5 @@
 'use client'
-import { useContext, useState, createContext } from "react";
+import { useContext, useState, createContext, useCallback } from "react";
 
 interface DataContextType {
     // define the types for data and its fields
@@ -9,7 +9,10 @@ interface DataContextType {
         audience: string,
         callToAction: string
     } | null;
+
     setData: React.Dispatch<React.SetStateAction<{ summary: string; style: string, audience: string, callToAction: string } | null>>;
+
+    clearExistingData: () => void
 }
 
 
@@ -20,9 +23,20 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // create a provider that will allow children components to have access to the shared data
     const [data, setData] = useState<{ summary: string; style: string, audience: string, callToAction:string } | null>(null);
 
+    const clearExistingData = useCallback(() => {
+        setData({
+            summary: "",
+            style: "",
+            audience: "",
+            callToAction: ""
+        });
+        console.log('successfully cleared all existing data.');
+    }, [])
+
     const contextValue: DataContextType = {
         data,
         setData,
+        clearExistingData
     };
 
     return (
