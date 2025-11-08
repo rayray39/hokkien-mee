@@ -4,7 +4,7 @@ Craft engaging LinkedIn posts effortlessly using AI. Simply provide a short summ
 Built with NextJS and Typescript, HokkienMee features a clean and simple interface for seamless post creation.
 
 ## Dependencies
-- **OpenRouter**, the web application utilizes ``meta-llama/llama-3.3-8b-instruct:free``, via OpenRouter's API, on the back to generate the curated LinkedIn post.
+- **OpenRouter**, the web application utilizes ``mistralai/mistral-7b-instruct:free``, via OpenRouter's API, on the back to generate the curated LinkedIn post.
 - **Mantine UI**, the web application utilizes the CSS components (eg. Loader) from Mantine UI due its ease of use and modern design.
 - **Vercel's Serverless Functions**, the web application does not have an actual "backend", it however utilizes Vercel's cloud environment to process a RESTful API call, thus the name serverless.
 
