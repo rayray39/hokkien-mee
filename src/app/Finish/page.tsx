@@ -50,10 +50,12 @@ export default function Finish() {
         setGeneratedContent(data.generatedContent);
 
         setIsLoading(true);
+
         setTimeout(() => {
-            router.push(`/GenContent?text=${encodeURIComponent(data.generatedContent)}`);
+            sessionStorage.setItem('generatedContent', data.generatedContent);  // set the generatd content in the session storage, and /GenContent can retrieve this data from the session storage
+            router.push('/GenContent');
+            setIsLoading(false);
         }, 6000);
-        setIsLoading(false);
     }
 
     return (
