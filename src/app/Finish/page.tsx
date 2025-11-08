@@ -8,8 +8,8 @@ import { Loader } from '@mantine/core';
 
 
 export default function Finish() {
-    const { data, setData } = useDataContext();
-    const [generatedContent, setGeneratedContent] = useState<string>('');
+    const { data } = useDataContext();
+    const [, setGeneratedContent] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const router = useRouter();

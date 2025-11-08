@@ -7,12 +7,6 @@ import "./globals.css";
 
 import { MantineProvider, mantineHtmlProps } from '@mantine/core';
 
-
-const ubuntu = Ubuntu({
-    weight: "400",
-    subsets: ["latin"]
-})
-
 const ubuntuMono = Ubuntu_Mono({
     weight: "400",
     subsets: ["latin"]

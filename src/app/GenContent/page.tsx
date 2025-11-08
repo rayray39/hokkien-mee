@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import NavButton from "../Components/NavButton";
 import { useDataContext } from "../Contexts/DataContext";
 
@@ -18,7 +18,7 @@ export default function GenContent() {
     }, [])
 
     const router = useRouter();
-    const {data, setData, clearExistingData} = useDataContext();
+    const { clearExistingData} = useDataContext();
 
     const [copied, setCopied] = useState<boolean>(false);
     const copiedButtonStyle = `

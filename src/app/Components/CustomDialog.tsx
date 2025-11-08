@@ -1,4 +1,3 @@
-import { Ref } from "react";
 import NavButton from "./NavButton";
 
 interface CustomDialogProps {

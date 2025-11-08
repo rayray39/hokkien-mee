@@ -1,7 +1,7 @@
 export async function POST(request: Request) {
     const { prompt } = await request.json();
-    var message = '';           // message regarding the response (error/success)
-    var generatedContent = '';  // the reponse from the openrouter LLM
+    let message = '';           // message regarding the response (error/success)
+    let generatedContent = '';  // the reponse from the openrouter LLM
 
     console.log(`prompt: ${prompt}`);
 
