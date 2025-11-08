@@ -1,14 +1,21 @@
 'use client'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import NavButton from "../Components/NavButton";
 import { useDataContext } from "../Contexts/DataContext";
 
 export default function GenContent() {
-    const searchParams = useSearchParams();
-    const text:string = searchParams.get('text') ?? "";     // retrieve the 'text' param (llm generated output)
+    // const searchParams = useSearchParams();
+    // const text:string = searchParams.get('text') ?? "";     // retrieve the 'text' param (llm generated output)
 
-    const [genContent, setGenContent] = useState<string>(text);
+    const [genContent, setGenContent] = useState<string>("");
+
+    useEffect(() => {
+        const retrievedGenContent = sessionStorage.getItem('generatedContent');
+        if (retrievedGenContent) {
+            setGenContent(retrievedGenContent);
+        }
+    }, [])
 
     const router = useRouter();
     const {data, setData, clearExistingData} = useDataContext();
@@ -42,7 +49,7 @@ export default function GenContent() {
             setTimeout(() => {
                 // reset the copied state after 3s
                 setCopied(false)
-            }, 3000);
+            }, 2000);
             console.log('successfully copied to clipboard');
         } catch (error) {
             console.error('Failed to copy text: ', error);
