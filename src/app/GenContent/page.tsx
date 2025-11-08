@@ -14,6 +14,9 @@ export default function GenContent() {
         const retrievedGenContent = sessionStorage.getItem('generatedContent');
         if (retrievedGenContent) {
             setGenContent(retrievedGenContent);
+        } else {
+            // display error message if sessionStorage.getItem("generatedContent") is empty
+            setGenContent("*** Error generating post content, please try again later. ***");
         }
     }, [])
 
