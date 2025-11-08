@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Ubuntu, Ubuntu_Mono } from "next/font/google";
+import { Ubuntu_Mono } from "next/font/google";
 import { DataProvider } from "./Contexts/DataContext";
 
 import '@mantine/core/styles.css';
