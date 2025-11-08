@@ -10,7 +10,7 @@ export default function Home() {
     const [openAboutDialog, setOpenAboutDialog] = useState<boolean>(false);
 
     const aboutDialogBody:string = `
-        Generate a curated LinkedIn post with just a few clicks, powered by meta's llama-3.3-8b model
+        Generate a curated LinkedIn post with just a few clicks, powered by Mistral AI's mistral-7b-instruct model
     `
 
     const openAbout = () => {

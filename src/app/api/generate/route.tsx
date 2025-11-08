@@ -3,17 +3,17 @@ export async function POST(request: Request) {
     let message = '';           // message regarding the response (error/success)
     let generatedContent = '';  // the reponse from the openrouter LLM
 
-    console.log(`prompt: ${prompt}`);
-
     try {
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+                "HTTP-Referer": "https://hokkienmee.vercel.app",
+                "X-Title": "hokkienmee", 
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                "model": "meta-llama/llama-3.3-8b-instruct:free",
+                "model": "mistralai/mistral-7b-instruct:free",
                 "messages": [
                     {
                         "role": "user",
