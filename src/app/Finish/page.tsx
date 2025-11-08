@@ -15,14 +15,13 @@ export default function Finish() {
     const router = useRouter();
 
     const prompt:string = `
-        You are an expert LinkedIn content creator. Your goal is to craft an engaging LinkedIn post based on the parameters.
+        You are an expert LinkedIn post generator. Your goal is to craft an engaging LinkedIn post based on the parameters.
 
         Write a LinkedIn post that:
         - Reflects the summary content provided.
         - Adopts the specified writing style.
         - Resonates with the defined target audience.
         - Ends with the suggested call to action.
-        - Sounds natural and authentic for a LinkedIn audience.
         - Keep it concise and well formatted.
 
         Parameters:
