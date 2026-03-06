@@ -4,6 +4,8 @@ export async function POST(request: Request) {
     let generatedContent = '';  // the reponse from the openrouter LLM
 
     try {
+        console.log('api route reached');
+
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -13,7 +15,7 @@ export async function POST(request: Request) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                "model": "mistralai/mistral-7b-instruct:free",
+                "model": "google/gemma-3-12b-it:free",
                 "messages": [
                     {
                         "role": "user",
@@ -29,7 +31,7 @@ export async function POST(request: Request) {
             message = 'Openrouter POST request successful.'
         } else {
             console.log(response.status);
-            message = 'Response error.';
+            message = `Response error: ${response.status}.`;
         }
     } catch (error) {
         message = 'Error in sending prompt to openrouter.';

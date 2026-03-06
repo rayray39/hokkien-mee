@@ -45,7 +45,7 @@ export default function Finish() {
         })
         const data = await response.json();
         console.log(`message: ${data.message}`);
-        console.log(`generated content: ${data.generatedContent}`);
+        // console.log(`generated content: ${data.generatedContent}`);
         setGeneratedContent(data.generatedContent);
 
         setIsLoading(true);
